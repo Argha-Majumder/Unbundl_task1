@@ -1,0 +1,26 @@
+.number {
+    width: 20%;
+}
+
+#text-h {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+.symbol:hover {
+    cursor: pointer;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.only-minus {
+    opacity: 0.3;
+}
+
+.only-minus:hover {
+    cursor: not-allowed;
+}
