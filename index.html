@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
   </head>
   <body>
+      <!-- Nav Bar -->
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Navbar</a>
@@ -46,6 +47,8 @@
         </div>
       </nav>
       <h2 id="text-h">Products</h2>
+
+      <!-- Shopping Cart  -->
       <div class="cart-div" onclick="openDiv()">
           <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
               <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
@@ -55,10 +58,15 @@
           </span>
           <span class="visually-hidden">unread messages</span>
       </div>
+
+      <!-- Cart items with their name, quantity and price -->
       <div class="content">
           <p>Total Price : <span id="total-price">0</span></p>
+          <ul id="items-list"></ul>
           <button id="close-btn" onclick="closeDiv()">Close</button>
       </div>
+
+      <!-- The Card Items -->
       <div class="container">
           <div class="row mb-5">
               <div class="col">

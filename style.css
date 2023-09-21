@@ -12,6 +12,7 @@
     cursor: pointer;
 }
 
+/* This is to disable up and down arrow in input number */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -30,10 +31,13 @@ input::-webkit-inner-spin-button {
     position: fixed;
     right: 13px;
     display: inline;
+    background-color: #fff;
+    z-index: 10;
 }
 
 .cart-div:hover {
     cursor: pointer;
+    transform: scale(1.1);
 }
 
 .content {
@@ -42,8 +46,7 @@ input::-webkit-inner-spin-button {
     text-align: center;
     border: 1px solid rgba(33,37,41,0.2);
     top: 170px;
-    width: 150px;
-    height: 200px;
+    width: 200px;
     right: 0;
     z-index: 100;
     background-color: white;
@@ -53,8 +56,17 @@ input::-webkit-inner-spin-button {
     background-color: #0d6efd;
     color: white;
     border-style: none;
+    margin-bottom: 10px;
 }
 
 #close-btn:hover {
     background-color: #095fe0;
+}
+
+#items-list li {
+    list-style-type: none;
+}
+
+.trash-symbol:hover {
+    cursor: pointer;
 }
