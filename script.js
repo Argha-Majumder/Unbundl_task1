@@ -40,7 +40,7 @@ buttons.forEach((button)=> {
     button.addEventListener('click', function(event) {
         let qty = parseInt(localStorage.getItem("quantity"));
         
-        // if quantity if already 8 the cart item can't be increased
+        // if quantity is already 8 the cart item can't be increased
         if (qty == 8) {
             showWarning();
             return;
