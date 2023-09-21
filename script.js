@@ -1,6 +1,8 @@
 let symbols = document.querySelectorAll('.symbol');
 let buttons = document.querySelectorAll('.cart-price');
 let minus = document.querySelectorAll('.only-minus');
+let cartPrice = document.getElementsByClassName('cart-div');
+let toggle = false;
 
 localStorage.setItem("price",0);
 localStorage.setItem("quantity",0);
@@ -35,8 +37,14 @@ buttons.forEach((button)=> {
         }
         let initialPrice = parseInt(localStorage.getItem("price"));
         let initialQty = parseInt(event.target.parentNode.childNodes[5].childNodes[3].value);
-        qty += initialQty;
         
+        if (initialQty < 1) {
+            alert('Negative numbers not allowed');
+            return;
+        }
+
+        qty += initialQty;
+
         if (qty>8) {
             showWarning();
             return;
@@ -44,9 +52,27 @@ buttons.forEach((button)=> {
         initialPrice += initialQty*parseInt(event.target.parentNode.childNodes[3].innerText.substring(3));
         localStorage.setItem("quantity",qty);
         localStorage.setItem("price", initialPrice);
+        document.getElementById('total-price').innerText = localStorage.getItem('price');
+        document.getElementById('total-quantity').innerText = localStorage.getItem('quantity');
     });
 });
 
 function showWarning() {
     alert('Can\'t add more than 8');
 }
+
+function openDiv() {
+    document.querySelector('.content').style.visibility = 'visible';
+    toggle = false;
+}
+
+function closeDiv() {
+    document.querySelector('.content').style.visibility = 'hidden';
+}
+
+document.addEventListener('click', function(event) {
+    if (toggle && event.target !== document.querySelector('.content')) {
+        closeDiv();
+    }
+    toggle = true;
+});
