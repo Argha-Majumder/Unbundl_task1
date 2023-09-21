@@ -8,29 +8,16 @@ localStorage.setItem("quantity",0);
 symbols.forEach((symbol)=> {
     symbol.addEventListener('click', function(event) {
         let val = event.target.parentNode.childNodes[3].value;
-        let initialPrice = parseInt(localStorage.getItem("price"));
-        let qty = localStorage.getItem("quantity");
         if (event.target.classList.contains('fa-plus')) {
-            if (qty>8) {
-                showWarning();
-            } else {
-                val++;
-                qty++;
-                initialPrice += parseInt(event.target.parentNode.parentNode.childNodes[3].innerText.substring(3));
-            }
+            val++;
         } else {
             val--;
             if (val<2) {
                 event.target.parentNode.childNodes[1].style.opacity = 0.3;
                 event.target.parentNode.childNodes[1].style.cursor = 'not-allowed';
-            } else {
-                qty--;
-                initialPrice -= parseInt(event.target.parentNode.parentNode.childNodes[3].innerText.substring(3));
             }
         }
-        localStorage.setItem("quantity",qty);
-        localStorage.setItem("price",initialPrice);
-        event.target.parentNode.childNodes[3].value = val;
+        event.target.parentNode.childNodes[3].value = val>=1?val:1;
         if (val>1) {
             event.target.parentNode.childNodes[1].style.opacity = 1;
             event.target.parentNode.childNodes[1].style.cursor = 'pointer';
@@ -40,6 +27,26 @@ symbols.forEach((symbol)=> {
 
 buttons.forEach((button)=> {
     button.addEventListener('click', function(event) {
-        console.log(event.target);
+        let qty = parseInt(localStorage.getItem("quantity"));
+        
+        if (qty == 8) {
+            showWarning();
+            return;
+        }
+        let initialPrice = parseInt(localStorage.getItem("price"));
+        let initialQty = parseInt(event.target.parentNode.childNodes[5].childNodes[3].value);
+        qty += initialQty;
+        
+        if (qty>8) {
+            showWarning();
+            return;
+        }
+        initialPrice += initialQty*parseInt(event.target.parentNode.childNodes[3].innerText.substring(3));
+        localStorage.setItem("quantity",qty);
+        localStorage.setItem("price", initialPrice);
     });
 });
+
+function showWarning() {
+    alert('Can\'t add more than 8');
+}
